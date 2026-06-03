@@ -6,7 +6,9 @@ const AdminRoute = ({ children }) => {
 
   if (!isLoaded) return null;
 
-  if (user?.id !== import.meta.env.VITE_ADMIN_USER_ID) {
+  const role = user?.publicMetadata?.role;
+
+  if (role !== "admin") {
     return <Navigate to="/" replace />;
   }
 
