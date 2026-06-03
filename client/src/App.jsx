@@ -22,6 +22,7 @@ import { SignIn } from '@clerk/react'
 import Theaters from './pages/Theatures'
 import Releases from './pages/Releases'
 import AddMovie from './pages/admin/AddMovie'
+import AdminRoute from "./pages/admin/AdminRoute";
 
 const App = () => {
 
@@ -48,7 +49,10 @@ const App = () => {
         <Route path='/releases' element={<Releases />} />
         
         {/* Admin Routes */}
-        <Route path='/admin' element={<Layout />} >
+        <Route path="/admin" element={
+          <AdminRoute>
+                <Layout />
+         </AdminRoute> }>
           <Route index element={<Dashboard/>} />
           <Route path='add-movies' element={<AddMovie/>}/>
           <Route path='add-shows' element={<AddShows/>} />
