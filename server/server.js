@@ -1,32 +1,32 @@
-import express from 'express'
-import cors from 'cors'
-import connectDB from './configs/db.js'
-import 'dotenv/config'
-import { clerkMiddleware } from '@clerk/express'
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-import { serve } from "inngest/express";
-import { inngest, functions } from "./inngest/index.js"
-
-
-
-const app = express()
-const port = process.env.PORT || 3000
-
-app.use(express.json())  
-app.use(cors())
-
-app.use(clerkMiddleware())   
+// Routes Imports
+const paymentRoutes = require('./routes/paymentRoutes.js');
+const movieRoutes = require('./routes/movieRoutes.js');
+const showRoutes = require('./routes/showRoutes.js');
+const bookingRoutes = require('./routes/bookingRoutes.js');
+const theaterRoutes = require('./routes/theaterRoutes.js');
 
 
-await connectDB()
 
-app.get('/', (req, res) => {
-  res.send('Server is running') 
-})
+const app = express(); 
 
-app.use("/api/inngest", serve({ client: inngest, functions }));
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// API Endpoints Mount
+app.use('/api/movies', movieRoutes);
+app.use('/api/shows', showRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/theaters', theaterRoutes);
+app.use("/api/payment", paymentRoutes);
 
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)      
-}) 
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Systematic PERN server running cleanly on port ${PORT}`);
+});

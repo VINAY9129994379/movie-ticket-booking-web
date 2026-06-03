@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useContext } from 'react'
 import Navbar from './components/Navbar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
@@ -16,10 +17,16 @@ import Dashboard from './pages/admin/Dashboard'
 import AddShows from './pages/admin/AddShows'
 import ListShows from './pages/admin/ListShows'
 import ListBookings from './pages/admin/ListBookings'
+import { AppContext } from './context/AppContext'
+import { SignIn } from '@clerk/react'
+import Theaters from './pages/Theatures'
+import Releases from './pages/Releases'
+import AddMovie from './pages/admin/AddMovie'
 
 const App = () => {
 
   const isAdminRoute = useLocation().pathname.startsWith('/admin')
+  const {user} = useContext(AppContext)
 
   return (
     <>
@@ -35,10 +42,15 @@ const App = () => {
         <Route path='/movies/:id/:date' element={<SeatLayout />} />
         <Route path='/my-bookings' element={<MyBookings />} />
         <Route path='/favorite' element={<Favorite />} />
-
-        {/* ✅ Admin Routes */}
-        <Route path='/admin' element={<Layout/>}>
+        
+        {/* FIXED: Registered the missing route targets linked from your layout */}
+        <Route path='/theaters' element={<Theaters/>} />
+        <Route path='/releases' element={<Releases />} />
+        
+        {/* Admin Routes */}
+        <Route path='/admin' element={<Layout />} >
           <Route index element={<Dashboard/>} />
+          <Route path='add-movies' element={<AddMovie/>}/>
           <Route path='add-shows' element={<AddShows/>} />
           <Route path='list-shows' element={<ListShows/>} />
           <Route path='list-bookings' element={<ListBookings/>} />
