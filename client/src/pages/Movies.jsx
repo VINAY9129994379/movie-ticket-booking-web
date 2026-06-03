@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import MovieCard from '../components/MovieCard'
 import Blur from '../components/Blur'
 import Loading from '../components/Loading'
-import DateFilterBar from '../components/DateFilterBar'
+import DateFilterBar from '../components/DatefilterBar'
+
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 

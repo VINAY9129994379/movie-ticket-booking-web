@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Feautred from '../components/Featured'
-import DateFilterBar from '../components/DateFilterBar'
+import DateFilterBar from '../components/DatefilterBar'
+
 import { useNavigate } from 'react-router-dom'
 import { MapPinIcon, TicketIcon, CalendarIcon, ArrowRightIcon } from 'lucide-react'
 

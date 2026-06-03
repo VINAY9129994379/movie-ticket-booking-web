@@ -11,7 +11,7 @@ import '../lib/isoTimeFormat'
 
 const BACKEND_URL = import.meta.env.VITE_BASE_URL
 
-const groupRows = [['A', 'B', 'C'], ['D', 'E','F'], ['G', 'H', 'I'], ['j', 'K','L'], ['M', 'N','O'],['P', 'K','U'],['V', 'W', 'X']]
+const groupRows = [['A', 'B', 'C'], ['D', 'E','F'], ['G', 'H', 'I'], ['j', 'K','L'], ['M', 'N','O'],['P', 'Q','R'],['T', 'U', 'V']]
 
 const SeatLayout = () => {
   const { id, date } = useParams()
